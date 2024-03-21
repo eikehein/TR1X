@@ -1,9 +1,9 @@
 #include "gfx/2d/2d_renderer.h"
 
-#include "gfx/gl/gl_core_3_3.h"
 #include "gfx/gl/utils.h"
 #include "log.h"
 
+#include <GL/glew.h>
 #include <assert.h>
 
 void GFX_2D_Renderer_Init(GFX_2D_Renderer *renderer)

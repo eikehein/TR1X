@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gfx/gl/gl_core_3_3.h"
+#include <GL/glew.h>
 
 typedef struct GFX_GL_Buffer {
     GLuint id;

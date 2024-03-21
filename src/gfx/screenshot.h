@@ -1,7 +1,6 @@
 #pragma once
 
-#include "gfx/gl/gl_core_3_3.h"
-
+#include <GL/glew.h>
 #include <stdbool.h>
 #include <stdint.h>
 

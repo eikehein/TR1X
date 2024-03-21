@@ -1,8 +1,8 @@
 #pragma once
 
 #include "gfx/common.h"
-#include "gfx/gl/gl_core_3_3.h"
 
+#include <GL/glew.h>
 #include <stdbool.h>
 
 typedef struct GFX_GL_Program {

@@ -2,12 +2,12 @@
 
 #include "gfx/common.h"
 #include "gfx/gl/buffer.h"
-#include "gfx/gl/gl_core_3_3.h"
 #include "gfx/gl/program.h"
 #include "gfx/gl/sampler.h"
 #include "gfx/gl/texture.h"
 #include "gfx/gl/vertex_array.h"
 
+#include <GL/glew.h>
 #include <stdbool.h>
 #include <stdint.h>
 

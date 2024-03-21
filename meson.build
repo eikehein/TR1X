@@ -36,6 +36,7 @@ dep_backtrace = c_compiler.find_library('backtrace', static: staticdeps, require
 dep_mathlibrary = c_compiler.find_library('m', static: staticdeps, required : false)
 dep_swscale = dependency('libswscale', static: staticdeps)
 dep_swresample = dependency('libswresample', static: staticdeps)
+dep_glew = dependency('glew', static: staticdeps)
 dep_sdl2 = dependency('SDL2', static: staticdeps)
 dep_zlib = null_dep
 
@@ -261,7 +262,6 @@ sources = [
   'src/gfx/context.c',
   'src/gfx/fbo/fbo_renderer.c',
   'src/gfx/gl/buffer.c',
-  'src/gfx/gl/gl_core_3_3.c',
   'src/gfx/gl/program.c',
   'src/gfx/gl/sampler.c',
   'src/gfx/gl/texture.c',
@@ -299,6 +299,7 @@ dependencies = [
   dep_avutil,
   dep_mathlibrary,
   dep_opengl,
+  dep_glew,
   dep_sdl2,
   dep_swresample,
   dep_swscale,
