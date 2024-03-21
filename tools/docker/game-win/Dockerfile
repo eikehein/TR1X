@@ -61,6 +61,27 @@ RUN cd FFmpeg \
     && make install
 
 
+# GLEW
+FROM mingw as glew
+RUN git clone https://github.com/nigels-com/glew.git
+RUN apt-get install -y \
+    build-essential \
+    libxmu-dev \
+    libxi-dev \
+    libgl-dev \
+    python3
+RUN cd glew/auto \
+    && PYTHON=python3 make
+RUN mkdir -p /ext/lib \
+    && export \
+        SYSTEM=linux-mingw32 \
+        GLEW_NO_GLU=-DGLEW_NO_GLU \
+        GLEW_DEST=/ext \
+    && cd glew \
+    && make \
+    && make install
+RUN sed -i "s/Cflags: .*/\\0 -DGLEW_STATIC/" /ext/lib/pkgconfig/glew.pc
+
 
 # SDL
 FROM mingw as sdl
@@ -106,10 +127,6 @@ FROM mingw
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=zlib /ext/ /ext/
-COPY --from=libav /ext/ /ext/
-COPY --from=sdl /ext/ /ext/
-
 # system dependencies
 # configure pkgconfig manually
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=967969
@@ -124,6 +141,11 @@ RUN apt-get install -y \
         pyjson5 \
         meson \
         ninja
+
+COPY --from=zlib /ext/ /ext/
+COPY --from=libav /ext/ /ext/
+COPY --from=glew /ext/ /ext/
+COPY --from=sdl /ext/ /ext/
 
 ENV PYTHONPATH=/app/tools/
 ENTRYPOINT ["/app/tools/docker/game-win/entrypoint.sh"]
