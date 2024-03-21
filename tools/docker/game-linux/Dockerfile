@@ -102,7 +102,8 @@ WORKDIR /app
 # package dependencies
 RUN apt-get install -y \
     zlib1g-dev \
-    libgl1-mesa-dev
+    libgl1-mesa-dev \
+    libglew-dev
 
 # tooling dependencies
 # configure pkgconfig manually
