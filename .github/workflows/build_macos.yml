@@ -70,6 +70,9 @@ jobs:
           sudo port install bzip2 +universal
           sudo port install xz +universal
 
+      - name: "Build dependency: GLEW (universal)"
+        run: sudo port -N install glew +universal
+
       - name: "Build dependency: libsdl2 (universal)"
         run: sudo port -N install libsdl2 +universal
 
